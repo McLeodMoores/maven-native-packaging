@@ -59,15 +59,18 @@ public class PackageExecMojoTest {
     instance.applyDefaults ();
     assertNull (instance.getSources ());
     final HeaderFile headerFile = new HeaderFile ();
-    headerFile.setPath ("src/test/files/include");
+    headerFile.setPath ("src" + File.separator + "test" + File.separator + "files" + File.separator
+        + "include");
     headerFile.setPattern ("*.h");
     final Executable exec32 = new Executable ();
     exec32.setArch ("i386");
-    exec32.setPath ("src/test/files/bin32");
+    exec32.setPath ("src" + File.separator + "test" + File.separator + "files" + File.separator
+        + "bin32");
     exec32.setPattern ("*.exe");
     final DynamicLib dynamic32 = new DynamicLib ();
     dynamic32.setArch ("i386");
-    dynamic32.setPath ("src/test/files/dll32");
+    dynamic32.setPath ("src" + File.separator + "test" + File.separator + "files" + File.separator
+        + "dll32");
     dynamic32.setPattern ("*.dll");
     dynamic32.setHeaders (new HeaderFile[] { headerFile });
     final StaticLib implib32 = new StaticLib ();
@@ -76,11 +79,13 @@ public class PackageExecMojoTest {
     exec32.setLibraries (new ArchSource[] { dynamic32 });
     final Executable exec64 = new Executable ();
     exec64.setArch ("x64");
-    exec64.setPath ("src/test/files/bin64");
+    exec64.setPath ("src" + File.separator + "test" + File.separator + "files" + File.separator
+        + "bin64");
     exec64.setPattern ("*.exe");
     final DynamicLib dynamic64 = new DynamicLib ();
     dynamic64.setArch ("x64");
-    dynamic64.setPath ("src/test/files/dll64");
+    dynamic64.setPath ("src" + File.separator + "test" + File.separator + "files" + File.separator
+        + "dll64");
     dynamic64.setPattern ("*.dll");
     dynamic64.setHeaders (new HeaderFile[] { headerFile });
     final StaticLib implib64 = new StaticLib ();
@@ -168,8 +173,12 @@ public class PackageExecMojoTest {
           while ((entry = zip.getNextEntry ()) != null) {
             files.add (entry.getName ());
           }
-          assertEquals (files, ImmutableSet.of ("bin-i386/1.exe", "bin-x64/2.exe",
-              "bin-i386/3.dll", "lib-i386/3.lib", "lib-x64/4.lib", "bin-x64/4.dll", "include/5.h"));
+          assertEquals (
+              files,
+              ImmutableSet.of ("bin-i386" + File.separator + "1.exe", "bin-x64" + File.separator
+                  + "2.exe", "bin-i386" + File.separator + "3.dll", "lib-i386" + File.separator
+                  + "3.lib", "lib-x64" + File.separator + "4.lib", "bin-x64" + File.separator
+                  + "4.dll", "include" + File.separator + "5.h"));
           return Boolean.TRUE;
         }
 

@@ -195,9 +195,9 @@ public class PackageMojo extends AbstractMojo {
     }
 
     private void storePath (final Source source, String path) {
-      if (path.length () > 0) path = path + "/";
+      if (path.length () > 0) path = path + File.separator;
       if (source.getDest () != null) {
-        path = path + source.getDest () + "/";
+        path = path + source.getDest () + File.separator;
       }
       _found.put (source, path);
     }

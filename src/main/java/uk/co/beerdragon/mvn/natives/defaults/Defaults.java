@@ -7,6 +7,7 @@
 
 package uk.co.beerdragon.mvn.natives.defaults;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Objects;
@@ -782,7 +783,12 @@ public class Defaults {
   }
 
   private static String getSingle (final Properties properties, final String key) {
-    return properties.getProperty (key);
+    final String value = properties.getProperty (key);
+    if (value != null) {
+      return value.replace ('/', File.separatorChar);
+    } else {
+      return null;
+    }
   }
 
   private static String getSingle (final Properties properties, final String prefix,

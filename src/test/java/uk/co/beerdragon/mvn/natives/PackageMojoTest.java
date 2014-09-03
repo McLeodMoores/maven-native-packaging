@@ -177,8 +177,8 @@ public class PackageMojoTest {
     project.setArtifact (Mockito.mock (Artifact.class));
     instance.setPluginContext (Collections.singletonMap ("project", project));
     final OutputStreamOpener outputStreams = Mockito.mock (OutputStreamOpener.class);
-    Mockito.when (outputStreams.open (new File ("target/test.zip"))).thenThrow (
-        new FileNotFoundException ("target/test.zip"));
+    Mockito.when (outputStreams.open (new File ("target" + File.separator + "test.zip")))
+        .thenThrow (new FileNotFoundException ("target" + File.separator + "test.zip"));
     instance.setOutputStreams (outputStreams);
     instance.execute ();
   }
@@ -194,14 +194,15 @@ public class PackageMojoTest {
     project.setArtifact (Mockito.mock (Artifact.class));
     instance.setPluginContext (Collections.singletonMap ("project", project));
     final OutputStreamOpener outputStreams = Mockito.mock (OutputStreamOpener.class);
-    Mockito.when (outputStreams.open (new File ("target/test.zip"))).thenReturn (
-        new ByteArrayOutputStream ());
+    Mockito.when (outputStreams.open (new File ("target" + File.separator + "test.zip")))
+        .thenReturn (new ByteArrayOutputStream ());
     instance.setOutputStreams (outputStreams);
     instance.setInputStreams (new InputStreamOpener () {
 
       @Override
       public InputStream open (final File file) throws IOException {
-        if ("src/test/files/include/5.h".equals (file.getPath ())) {
+        if (("src" + File.separator + "test" + File.separator + "files" + File.separator
+            + "include" + File.separator + "5.h").equals (file.getPath ())) {
           throw new FileNotFoundException (file.getPath ());
         } else {
           return super.open (file);
@@ -225,8 +226,8 @@ public class PackageMojoTest {
     project.setArtifact (Mockito.mock (Artifact.class));
     instance.setPluginContext (Collections.singletonMap ("project", project));
     final OutputStreamOpener outputStreams = Mockito.mock (OutputStreamOpener.class);
-    Mockito.when (outputStreams.open (new File ("target/test.zip"))).thenReturn (
-        new ByteArrayOutputStream ());
+    Mockito.when (outputStreams.open (new File ("target" + File.separator + "test.zip")))
+        .thenReturn (new ByteArrayOutputStream ());
     instance.setOutputStreams (outputStreams);
     instance.execute ();
   }
@@ -242,14 +243,15 @@ public class PackageMojoTest {
     project.setArtifact (Mockito.mock (Artifact.class));
     instance.setPluginContext (Collections.singletonMap ("project", project));
     final OutputStreamOpener outputStreams = Mockito.mock (OutputStreamOpener.class);
-    Mockito.when (outputStreams.open (new File ("target/test.zip"))).thenReturn (
-        new ByteArrayOutputStream ());
+    Mockito.when (outputStreams.open (new File ("target" + File.separator + "test.zip")))
+        .thenReturn (new ByteArrayOutputStream ());
     instance.setOutputStreams (outputStreams);
     instance.setInputStreams (new InputStreamOpener () {
 
       @Override
       public InputStream open (final File file) throws IOException {
-        if ("src/test/files/include/5.h".equals (file.getPath ())) {
+        if (("src" + File.separator + "test" + File.separator + "files" + File.separator
+            + "include" + File.separator + "5.h").equals (file.getPath ())) {
           return new FileInputStream (file) {
 
             @Override
@@ -278,8 +280,8 @@ public class PackageMojoTest {
     project.setArtifact (Mockito.mock (Artifact.class));
     instance.setPluginContext (Collections.singletonMap ("project", project));
     final OutputStreamOpener outputStreams = Mockito.mock (OutputStreamOpener.class);
-    Mockito.when (outputStreams.open (new File ("target/test.zip"))).thenReturn (
-        new ByteArrayOutputStream () {
+    Mockito.when (outputStreams.open (new File ("target" + File.separator + "test.zip")))
+        .thenReturn (new ByteArrayOutputStream () {
 
           @Override
           public void close () throws IOException {

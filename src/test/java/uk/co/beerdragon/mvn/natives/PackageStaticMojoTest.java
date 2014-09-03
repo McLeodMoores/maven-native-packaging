@@ -59,22 +59,27 @@ public class PackageStaticMojoTest {
     instance.applyDefaults ();
     assertNull (instance.getSources ());
     final HeaderFile headerFile = new HeaderFile ();
-    headerFile.setPath ("src/test/files/include");
+    headerFile.setPath ("src" + File.separator + "test" + File.separator + "files" + File.separator
+        + "include");
     headerFile.setPattern ("*.h");
     final StaticLib static32 = new StaticLib ();
     static32.setArch ("i386");
-    static32.setPath ("src/test/files/lib32");
+    static32.setPath ("src" + File.separator + "test" + File.separator + "files" + File.separator
+        + "lib32");
     static32.setPattern ("*.lib");
     final HeaderFile header32 = new HeaderFile ();
-    header32.setPath ("src/test/files/lib32");
+    header32.setPath ("src" + File.separator + "test" + File.separator + "files" + File.separator
+        + "lib32");
     header32.setPattern ("*.h");
     static32.setHeaders (new HeaderFile[] { headerFile, header32 });
     final StaticLib static64 = new StaticLib ();
     static64.setArch ("x64");
-    static64.setPath ("src/test/files/lib64");
+    static64.setPath ("src" + File.separator + "test" + File.separator + "files" + File.separator
+        + "lib64");
     static64.setPattern ("*.lib");
     final HeaderFile header64 = new HeaderFile ();
-    header64.setPath ("src/test/files/lib64");
+    header64.setPath ("src" + File.separator + "test" + File.separator + "files" + File.separator
+        + "lib64");
     header64.setPattern ("*.h");
     static64.setHeaders (new HeaderFile[] { headerFile, header64 });
     assertEquals (instance.getStaticLibs (), new StaticLib[] { static32, static64 });
@@ -87,7 +92,8 @@ public class PackageStaticMojoTest {
     instance.setStaticLibs (new StaticLib[] { new StaticLib () });
     instance.applyDefaults ();
     final HeaderFile headerFile = new HeaderFile ();
-    headerFile.setPath ("src/test/files/include");
+    headerFile.setPath ("src" + File.separator + "test" + File.separator + "files" + File.separator
+        + "include");
     headerFile.setPattern ("*.h");
     final StaticLib staticLib = new StaticLib ();
     staticLib.setPattern ("*.lib");
@@ -165,8 +171,10 @@ public class PackageStaticMojoTest {
           while ((entry = zip.getNextEntry ()) != null) {
             files.add (entry.getName ());
           }
-          assertEquals (files, ImmutableSet.of ("include/5.h", "lib-i386/6.lib",
-              "include/i386/6.h", "lib-x64/7.lib", "include/x64/7.h"));
+          assertEquals (files, ImmutableSet.of ("include" + File.separator + "5.h", "lib-i386"
+              + File.separator + "6.lib", "include" + File.separator + "i386" + File.separator
+              + "6.h", "lib-x64" + File.separator + "7.lib", "include" + File.separator + "x64"
+              + File.separator + "7.h"));
           return Boolean.TRUE;
         }
 
