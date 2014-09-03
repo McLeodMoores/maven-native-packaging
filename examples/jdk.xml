@@ -4,7 +4,7 @@
 
   <groupId>com.oracle.jdk</groupId>
   <artifactId>win32</artifactId>
-  <version>1.7.0</version>
+  <version>1.8.0</version>
   <packaging>native-static</packaging>
 
   <name>JNI Development Kit</name>
@@ -18,9 +18,9 @@
   </licenses>
 
   <properties>
-    <maven-native-packing.version>0.2.0</maven-native-packing.version>
-    <java.i386.build>51</java.i386.build>
-    <java.x64.build>51</java.x64.build>
+    <maven-native-packing.version>0.2.1-SNAPSHOT</maven-native-packing.version>
+    <java.i386.build>20</java.i386.build>
+    <java.x64.build>20</java.x64.build>
     <java.i386.path>C:\Program Files (x86)\Java\jdk${project.version}_${java.i386.build}</java.i386.path>
     <java.x64.path>C:\Program Files\Java\jdk${project.version}_${java.x64.build}</java.x64.path>
   </properties>
