@@ -16,11 +16,24 @@
       <url>http://www.gnu.org/licenses/gpl.txt</url>
     </license>
   </licenses>
-
+  <developers>
+  	<developer>
+  	  <name>Andrew Griffin</name>
+  	</developer>
+  </developers>
+  <contributors>
+  	<contributor>
+  	  <name>Jim Moores</name>
+  	  <email>jim@mcleodmoores.com</email>
+  	  <organization>McLeod Moores Software Limited</organization>
+  	  <organizationUrl>http://www.mcleodmoores.com</organizationUrl>
+  	  <timezone>Europe/London</timezone>
+  	</contributor>
+  </contributors>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <commons-lang3.version>3.2.1</commons-lang3.version>
-    <helpers.version>0.1.1</helpers.version>
+    <helpers.version>0.1.2</helpers.version>
     <jacoco-maven-plugin.version>0.7.0.201403182114</jacoco-maven-plugin.version>
     <java.version>1.7</java.version>
     <maven-antrun-plugin.version>1.7</maven-antrun-plugin.version>
@@ -96,7 +109,7 @@
         </executions>
         <dependencies>
           <dependency>
-            <groupId>uk.co.beerdragon</groupId>
+            <groupId>com.mcleodmoores.maven</groupId>
             <artifactId>helpers</artifactId>
             <version>${helpers.version}</version>
           </dependency>
@@ -149,7 +162,7 @@
                 </rule>
               </rules>
               <excludes>
-                <exclude>uk/co/beerdragon/misc/*</exclude>
+ 	        <exclude>com/mcleodmoores/maven/misc/*</exclude>
               </excludes>
             </configuration>
           </execution>
