@@ -24,7 +24,19 @@
     <java.i386.path>C:\Program Files (x86)\Java\jdk${project.version}_${java.i386.build}</java.i386.path>
     <java.x64.path>C:\Program Files\Java\jdk${project.version}_${java.x64.build}</java.x64.path>
   </properties>
-
+  <distributionManagement>
+    <repository>
+      <id>private</id>
+      <name>McLeod Moores private maven repository</name>
+      <url>http://maven.mcleodmoores.com:8081/content/repositories/private</url>
+    </repository>
+    <snapshotRepository>
+      <id>private-snapshot</id>
+      <name>McLeod Moores private maven snapshot repository</name>
+      <url>http://maven.mcleodmoores.com:8081/content/repositories/private-snaps
+hot</url>
+    </snapshotRepository>
+  </distributionManagement>
   <build>
     <plugins>
       <plugin>

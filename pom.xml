@@ -2,9 +2,9 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>uk.co.beerdragon</groupId>
+  <groupId>com.mcleodmoores.maven</groupId>
   <artifactId>maven-native-packaging</artifactId>
-  <version>0.2.1-SNAPSHOT</version>
+  <version>0.2.2</version>
   <packaging>jar</packaging>
 
   <name>Mavan Native Packaging Plugin</name>
@@ -32,7 +32,18 @@
     <mockito.version>1.8.4</mockito.version>
     <testng.version>6.1.1</testng.version>
   </properties>
-
+  <distributionManagement>
+    <repository>
+      <id>releases</id>
+      <name>McLeod Moores public release maven repository</name>
+      <url>http://maven.mcleodmoores.com:8081/content/repositories/releases</url>
+    </repository>
+    <snapshotRepository>
+      <id>snapshots</id>
+      <name>McLeod Moores public snapshot maven repository</name>
+      <url>http://maven.mcleodmoores.com:8081/content/repositories/snapshots</url>
+    </snapshotRepository>
+  </distributionManagement>
   <build>
     <plugins>
       <plugin>
