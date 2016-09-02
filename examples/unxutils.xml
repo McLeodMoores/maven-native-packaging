@@ -18,13 +18,13 @@
   </licenses>
 
   <properties>
-    <maven-native-packing.version>0.2.0</maven-native-packing.version>
+    <maven-native-packing.version>0.2.2</maven-native-packing.version>
   </properties>
 
   <build>
     <plugins>
       <plugin>
-        <groupId>uk.co.beerdragon</groupId>
+        <groupId>com.mcleodmoores.maven</groupId>
         <artifactId>maven-native-packaging</artifactId>
         <version>${maven-native-packing.version}</version>
         <extensions>true</extensions>

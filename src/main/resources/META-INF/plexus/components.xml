@@ -6,9 +6,9 @@
       <implementation>org.apache.maven.lifecycle.mapping.DefaultLifecycleMapping</implementation>
       <configuration>
       <phases>
-        <initialize>uk.co.beerdragon:maven-native-packaging:unpack-dependencies</initialize>
-        <compile>uk.co.beerdragon:maven-native-packaging:build</compile>
-        <package>uk.co.beerdragon:maven-native-packaging:package-static</package>
+        <initialize>com.mcleodmoores.maven:maven-native-packaging:unpack-dependencies</initialize>
+        <compile>com.mcleodmoores.maven:maven-native-packaging:build</compile>
+        <package>com.mcleodmoores.maven:maven-native-packaging:package-static</package>
         <install>org.apache.maven.plugins:maven-install-plugin:install</install>
         <deploy>org.apache.maven.plugins:maven-deploy-plugin:deploy</deploy>
       </phases>
@@ -31,9 +31,9 @@
       <implementation>org.apache.maven.lifecycle.mapping.DefaultLifecycleMapping</implementation>
       <configuration>
       <phases>
-        <initialize>uk.co.beerdragon:maven-native-packaging:unpack-dependencies</initialize>
-        <compile>uk.co.beerdragon:maven-native-packaging:build</compile>
-        <package>uk.co.beerdragon:maven-native-packaging:package-dynamic</package>
+        <initialize>com.mcleodmoores.maven:maven-native-packaging:unpack-dependencies</initialize>
+        <compile>com.mcleodmoores.maven:maven-native-packaging:build</compile>
+        <package>com.mcleodmoores.maven:maven-native-packaging:package-dynamic</package>
         <install>org.apache.maven.plugins:maven-install-plugin:install</install>
         <deploy>org.apache.maven.plugins:maven-deploy-plugin:deploy</deploy>
       </phases>
@@ -56,9 +56,9 @@
       <implementation>org.apache.maven.lifecycle.mapping.DefaultLifecycleMapping</implementation>
       <configuration>
       <phases>
-        <initialize>uk.co.beerdragon:maven-native-packaging:unpack-dependencies</initialize>
-        <compile>uk.co.beerdragon:maven-native-packaging:build</compile>
-        <package>uk.co.beerdragon:maven-native-packaging:package-exec</package>
+        <initialize>com.mcleodmoores.maven:maven-native-packaging:unpack-dependencies</initialize>
+        <compile>com.mcleodmoores.maven:maven-native-packaging:build</compile>
+        <package>com.mcleodmoores.maven:maven-native-packaging:package-exec</package>
         <install>org.apache.maven.plugins:maven-install-plugin:install</install>
         <deploy>org.apache.maven.plugins:maven-deploy-plugin:deploy</deploy>
       </phases>

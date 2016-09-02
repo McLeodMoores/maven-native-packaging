@@ -3,7 +3,7 @@
     Triggers an external build process (such as MSBuild) appropriate for the
     platform and then packages the resulting components
   </description>
-  <groupId>uk.co.beerdragon</groupId>
+  <groupId>com.mcleodmoores.maven</groupId>
   <artifactId>maven-native-packaging</artifactId>
   <version>PROJECT_VERSION</version>
   <goalPrefix>native</goalPrefix>
@@ -14,7 +14,7 @@
       <description>Unpacks dependencies packaged with this plugin</description>
       <inheritedByDefault>true</inheritedByDefault>
       <phase>initialize</phase>
-      <implementation>uk.co.beerdragon.mvn.natives.UnpackDependenciesMojo</implementation>
+      <implementation>com.mcleodmoores.mvn.natives.UnpackDependenciesMojo</implementation>
       <language>java</language>
       <instantiationStrategy>per-lookup</instantiationStrategy>
       <requiresDependencyResolution>test</requiresDependencyResolution>
@@ -33,7 +33,7 @@
       <description>Triggers the external build (for example calling MSBuild)</description>
       <inheritedByDefault>true</inheritedByDefault>
       <phase>compile</phase>
-      <implementation>uk.co.beerdragon.mvn.natives.BuildMojo</implementation>
+      <implementation>com.mcleodmoores.mvn.natives.BuildMojo</implementation>
       <language>java</language>
       <instantiationStrategy>per-lookup</instantiationStrategy>
       <parameters>
@@ -68,7 +68,7 @@
       <description>Packages one or more files</description>
       <inheritedByDefault>true</inheritedByDefault>
       <phase>package</phase>
-      <implementation>uk.co.beerdragon.mvn.natives.PackageMojo</implementation>
+      <implementation>com.mcleodmoores.mvn.natives.PackageMojo</implementation>
       <language>java</language>
       <instantiationStrategy>per-lookup</instantiationStrategy>
       <parameters>
@@ -131,7 +131,7 @@
       <description>Packages one or more static libraries (for example .LIB and .H files)</description>
       <inheritedByDefault>true</inheritedByDefault>
       <phase>package</phase>
-      <implementation>uk.co.beerdragon.mvn.natives.PackageStaticMojo</implementation>
+      <implementation>com.mcleodmoores.mvn.natives.PackageStaticMojo</implementation>
       <language>java</language>
       <instantiationStrategy>per-lookup</instantiationStrategy>
       <parameters>
@@ -173,7 +173,7 @@
       <description>Packages one or dynamic libraries (for example .DLL, .LIB (implib) and .H files)</description>
       <inheritedByDefault>true</inheritedByDefault>
       <phase>package</phase>
-      <implementation>uk.co.beerdragon.mvn.natives.PackageDynamicMojo</implementation>
+      <implementation>com.mcleodmoores.mvn.natives.PackageDynamicMojo</implementation>
       <language>java</language>
       <instantiationStrategy>per-lookup</instantiationStrategy>
       <parameters>
@@ -215,7 +215,7 @@
       <description>Packages one or more executables (for example .EXE files)</description>
       <inheritedByDefault>true</inheritedByDefault>
       <phase>package</phase>
-      <implementation>uk.co.beerdragon.mvn.natives.PackageExecMojo</implementation>
+      <implementation>com.mcleodmoores.mvn.natives.PackageExecMojo</implementation>
       <language>java</language>
       <instantiationStrategy>per-lookup</instantiationStrategy>
       <parameters>

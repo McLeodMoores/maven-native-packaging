@@ -162,7 +162,7 @@
                 </rule>
               </rules>
               <excludes>
- 	        <exclude>com/mcleodmoores/maven/misc/*</exclude>
+ 	          <exclude>com/mcleodmoores/misc/*</exclude>
               </excludes>
             </configuration>
           </execution>
