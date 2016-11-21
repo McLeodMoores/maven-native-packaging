@@ -255,6 +255,7 @@ public class UnpackDependenciesMojo extends AbstractMojo {
             targetFile.mkdir ();
             targetFile = new File (targetFile, component);
           }
+          targetFile.getParentFile().mkdirs();
           if ((new IOCallback<OutputStream, Boolean> (getOutputStreams ().open (targetFile)) {
 
             @Override

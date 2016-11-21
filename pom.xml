@@ -4,7 +4,7 @@
 
   <groupId>com.mcleodmoores.maven</groupId>
   <artifactId>maven-native-packaging</artifactId>
-  <version>0.2.2</version>
+  <version>0.2.3</version>
   <packaging>jar</packaging>
 
   <name>Mavan Native Packaging Plugin</name>
@@ -57,6 +57,26 @@
       <url>http://maven.mcleodmoores.com:8081/content/repositories/snapshots</url>
     </snapshotRepository>
   </distributionManagement>
+  <repositories>
+    <repository>
+      <id>releases</id>
+      <name>McLeod Moores public release maven repository</name>
+      <url>http://maven.mcleodmoores.com:8081/content/repositories/releases</url> 
+    </repository>
+    <repository>
+      <id>snapshots</id>
+      <name>McLeod Moores public snapshot maven repository</name>
+      <url>http://maven.mcleodmoores.com:8081/content/repositories/snapshots</url>
+      <snapshots></snapshots>
+    </repository>
+  </repositories>
+  <pluginRepositories>
+    <pluginRepository>
+      <id>releases</id>
+      <name>McLeod Moores public release maven repository</name>
+      <url>http://maven.mcleodmoores.com:8081/content/repositories/releases</url> 
+    </pluginRepository>
+  </pluginRepositories>
   <build>
     <plugins>
       <plugin>
