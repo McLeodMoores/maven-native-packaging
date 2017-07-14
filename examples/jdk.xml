@@ -2,7 +2,7 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.oracle.jdk</groupId>
+  <groupId>com.mcleodmoores.oracle.jdk</groupId>
   <artifactId>win32</artifactId>
   <version>1.8.0</version>
   <packaging>native-static</packaging>
@@ -18,9 +18,9 @@
   </licenses>
 
   <properties>
-    <maven-native-packing.version>0.2.2</maven-native-packing.version>
-    <java.i386.build>20</java.i386.build>
-    <java.x64.build>20</java.x64.build>
+    <maven-native-packing.version>0.2.3</maven-native-packing.version>
+    <java.i386.build>131</java.i386.build>
+    <java.x64.build>131</java.x64.build>
     <java.i386.path>C:\Program Files (x86)\Java\jdk${project.version}_${java.i386.build}</java.i386.path>
     <java.x64.path>C:\Program Files\Java\jdk${project.version}_${java.x64.build}</java.x64.path>
   </properties>
