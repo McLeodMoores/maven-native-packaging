@@ -8,6 +8,7 @@
 package com.mcleodmoores.mvn.natives.defaults;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 import java.util.Properties;
 
@@ -111,7 +112,11 @@ public class DefaultsTest {
     defaults.setPath ("foo");
     defaults.setArch ("i386");
     defaults.save (properties, "x");
-    assertEquals (properties.toString (), "{x.path=foo, x.arch=i386}");
+    assertEquals (properties.size(), 2);
+    assertTrue (properties.containsKey("x.path"));
+    assertTrue (properties.containsKey("x.arch"));
+    assertEquals (properties.get("x.path"), "foo");
+    assertEquals (properties.get("x.arch"), "i386");
   }
 
   public void testDynamicLibDefaults_headers () {
@@ -224,8 +229,13 @@ public class DefaultsTest {
     implib.setPattern ("*.lib");
     defaults.setImplibs (new Defaults.StaticLibDefaults[] { implib });
     defaults.save (properties, "x");
-    assertEquals (properties.toString (),
-        "{x.implib=i3, x.header=h1;h2, i3.pattern=*.lib, h2.pattern=*.hh, h1.pattern=*.h, x.arch=i386}");
+    assertEquals (properties.size(), 6);
+    assertEquals (properties.get("x.implib"), "i3");
+    assertEquals (properties.get("x.header"), "h1;h2");
+    assertEquals (properties.get("i3.pattern"), "*.lib");
+    assertEquals (properties.get("h2.pattern"), "*.hh");
+    assertEquals (properties.get("h1.pattern"), "*.h");
+    assertEquals (properties.get("x.arch"), "i386");
   }
 
   public void testDefaultDynamicLibs () {
@@ -352,9 +362,15 @@ public class DefaultsTest {
     implib.setPattern ("*.foo");
     defaults.setLibraries (new Defaults.ArchSourceDefaults[] { implib, dynlib, misclib });
     defaults.save (properties, "x");
-    assertEquals (
-        properties.toString (),
-        "{l3.pattern=*.foo, x.library=l3;l4;l5, x.header=h1;h2, l4.type=dynamic, l3.type=static, h2.pattern=*.hh, h1.pattern=*.h, x.arch=i386}");
+    assertEquals (properties.size (), 8);
+    assertEquals (properties.get("l3.pattern"), "*.foo");
+    assertEquals (properties.get("x.library"), "l3;l4;l5");
+    assertEquals (properties.get("x.header"), "h1;h2");
+    assertEquals (properties.get("l4.type"), "dynamic");
+    assertEquals (properties.get("l3.type"), "static");
+    assertEquals (properties.get("h2.pattern"), "*.hh");
+    assertEquals (properties.get("h1.pattern"), "*.h");
+    assertEquals (properties.get("x.arch"), "i386");
   }
 
   public void testDefaultExecutables () {
@@ -430,8 +446,11 @@ public class DefaultsTest {
     headerB.setPattern ("*.hh");
     defaults.setHeaders (new Defaults.HeaderFileDefaults[] { headerA, headerB });
     defaults.save (properties, "x");
-    assertEquals (properties.toString (),
-        "{x.header=h1;h2, h2.pattern=*.hh, h1.pattern=*.h, x.arch=i386}");
+    assertEquals (properties.size(), 4);
+    assertEquals (properties.get("x.header"), "h1;h2");
+    assertEquals (properties.get("h2.pattern"), "*.hh");
+    assertEquals (properties.get("h1.pattern"), "*.h");
+    assertEquals (properties.get("x.arch"), "i386");
   }
 
   public void testDefaultStaticLibs () {

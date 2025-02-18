@@ -7,6 +7,8 @@
 
 package com.mcleodmoores.misc;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
@@ -75,7 +77,7 @@ public class ProcessExecutor {
     @Override
     public boolean isDone () {
       try {
-        _process.exitValue ();
+        _process.exitValue();
       } catch (final IllegalThreadStateException e) {
         return false;
       }
@@ -84,6 +86,40 @@ public class ProcessExecutor {
 
     @Override
     public Integer get () throws InterruptedException, ExecutionException {
+      InputStream inputStream = _process.getInputStream();
+      InputStream errorStream = _process.getErrorStream();
+      try {
+        byte[] buffer = new byte[4096];
+        while (!isDone()) {
+          int available = inputStream.available();
+          if (available > 0) {
+            int bytesRead = inputStream.read(buffer,0, available);
+            if (bytesRead > 0) {
+              System.out.write(buffer, 0, bytesRead);
+            }
+          } else {
+            // try not to spin on isDone() too heavily if process busy
+            try {
+              Thread.sleep(10);
+            } catch (final InterruptedException e) {}
+          }
+          available = errorStream.available();
+          if (available > 0) {
+            int bytesRead = errorStream.read(buffer,0, available);
+            if (bytesRead > 0) {
+              System.err.write(buffer, 0, bytesRead);
+            } else {
+              // try not to spin on isDone() too heavily if process busy
+              try {
+                Thread.sleep(10);
+              } catch (final InterruptedException e2) {
+              }
+
+            }
+          }
+        }
+      } catch (IOException ioe) {
+      }
       return _process.waitFor ();
     }
 
