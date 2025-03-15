@@ -4,10 +4,10 @@
 
   <groupId>com.mcleodmoores.maven</groupId>
   <artifactId>maven-native-packaging</artifactId>
-  <version>0.2.4</version>
+  <version>0.2.10</version>
   <packaging>jar</packaging>
 
-  <name>Mavan Native Packaging Plugin</name>
+  <name>Maven Native Packaging Plugin</name>
   <description>Plugin to support native code built externally to Maven</description>
 
   <licenses>
@@ -52,24 +52,24 @@
     <repository>
       <id>releases</id>
       <name>McLeod Moores public release maven repository</name>
-      <url>http://maven.mcleodmoores.com:8081/content/repositories/releases</url>
+      <url>https://maven.mcleodmoores.com/artifactory/releases</url>
     </repository>
     <snapshotRepository>
       <id>snapshots</id>
       <name>McLeod Moores public snapshot maven repository</name>
-      <url>http://maven.mcleodmoores.com:8081/content/repositories/snapshots</url>
+      <url>https://maven.mcleodmoores.com/artifactory/snapshots</url>
     </snapshotRepository>
   </distributionManagement>
   <repositories>
     <repository>
       <id>releases</id>
       <name>McLeod Moores public release maven repository</name>
-      <url>http://maven.mcleodmoores.com:8081/content/repositories/releases</url> 
+      <url>https://maven.mcleodmoores.com/artifactory/releases</url>
     </repository>
     <repository>
       <id>snapshots</id>
       <name>McLeod Moores public snapshot maven repository</name>
-      <url>http://maven.mcleodmoores.com:8081/content/repositories/snapshots</url>
+      <url>https://maven.mcleodmoores.com/artifactory/snapshots</url>
       <snapshots></snapshots>
     </repository>
   </repositories>
@@ -77,7 +77,7 @@
     <pluginRepository>
       <id>releases</id>
       <name>McLeod Moores public release maven repository</name>
-      <url>http://maven.mcleodmoores.com:8081/content/repositories/releases</url> 
+      <url>https://maven.mcleodmoores.com/artifactory/releases</url>
     </pluginRepository>
   </pluginRepositories>
   <build>

@@ -84,6 +84,12 @@ public class ProcessExecutor {
       return true;
     }
 
+    private void sleep() {
+      try {
+        Thread.sleep(10);
+      } catch (final InterruptedException e2) {
+      }
+    }
     @Override
     public Integer get () throws InterruptedException, ExecutionException {
       InputStream inputStream = _process.getInputStream();
@@ -91,31 +97,22 @@ public class ProcessExecutor {
       try {
         byte[] buffer = new byte[4096];
         while (!isDone()) {
-          int available = inputStream.available();
-          if (available > 0) {
-            int bytesRead = inputStream.read(buffer,0, available);
-            if (bytesRead > 0) {
-              System.out.write(buffer, 0, bytesRead);
-            }
+          int inputBytesRead = inputStream.available() > 0 ? inputStream.read(buffer) : -1;
+          if (inputBytesRead != -1) {
+            System.out.write(buffer, 0, inputBytesRead);
+          } else {
+            sleep();
+          }
+
+          int errorBytesRead = errorStream.available() > 0 ? errorStream.read(buffer) : -1;
+          if (errorBytesRead != -1) {
+            System.err.write(buffer, 0, errorBytesRead);
           } else {
             // try not to spin on isDone() too heavily if process busy
-            try {
-              Thread.sleep(10);
-            } catch (final InterruptedException e) {}
+            sleep();
           }
-          available = errorStream.available();
-          if (available > 0) {
-            int bytesRead = errorStream.read(buffer,0, available);
-            if (bytesRead > 0) {
-              System.err.write(buffer, 0, bytesRead);
-            } else {
-              // try not to spin on isDone() too heavily if process busy
-              try {
-                Thread.sleep(10);
-              } catch (final InterruptedException e2) {
-              }
-
-            }
+          if (inputBytesRead == -1 && errorBytesRead == -1) {
+            sleep();
           }
         }
       } catch (IOException ioe) {
